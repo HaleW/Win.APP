@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win.App.UWP", "Win.App.UWP\Win.App.UWP.csproj", "{CCF0A8B3-B08C-4A9A-9C89-E993DC38BC3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win.App.Server", "Win.App.TCP.Server\Win.App.Server.csproj", "{D5EC1F76-F448-4EE3-974F-8DA5061E14FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win.App.Server", "Win.App.TCP.Server\Win.App.Server.csproj", "{D5EC1F76-F448-4EE3-974F-8DA5061E14FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win.App.Protobuf", "Win.App.Protobuf\Win.App.Protobuf.csproj", "{DAF7A9A0-1A8A-4BFC-983D-76DE95118CFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win.App.Protobuf", "Win.App.Protobuf\Win.App.Protobuf.csproj", "{DAF7A9A0-1A8A-4BFC-983D-76DE95118CFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win.App.Client", "Win.App.Client\Win.App.Client.csproj", "{5DE63E98-285E-44BE-BA26-1F0C17E1D811}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win.App.Client", "Win.App.Client\Win.App.Client.csproj", "{5DE63E98-285E-44BE-BA26-1F0C17E1D811}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
