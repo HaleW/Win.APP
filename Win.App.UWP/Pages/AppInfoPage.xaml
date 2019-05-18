@@ -1,0 +1,377 @@
+﻿<Page
+    x:Class="Win.App.UWP.Pages.AppInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ThemeAcrylicBrush}">
+
+    <Page.Resources>
+        <Style TargetType="StackPanel" x:Key="GridStackPanelStyle">
+            <Setter Property="Margin" Value="0,20,0,20"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="TitleStyle">
+            <Setter Property="Margin" Value="0,20,0,20"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontWeight" Value="Black"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="TitelButton" BasedOn="{StaticResource ButtonRevealStyle}">
+            <Setter Property="Margin" Value="20,0,0,15"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Opacity" Value="0.8"/>
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="CommentResultStackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="SymbolIcon" x:Key="CommentRatingSymbolIcon">
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="Symbol" Value="Favorite"/>
+        </Style>
+
+        <Style TargetType="ProgressBar" x:Key="CommentProgressBar">
+            <Setter Property="Maximum" Value="100"/>
+            <Setter Property="Height" Value="10"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="AppHeadGrid.Width" Value="450"/>
+                        <Setter Target="AppImg.Width" Value="250"/>
+                        <Setter Target="DownloadButton.HorizontalAlignment" Value="Left"/>
+                        <Setter Target="DownloadButton.Margin" Value="10,5"/>
+                        <!--<Setter Target="CommentProgressBar.Width" Value="200"/>-->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="AppHeadGrid.Width" Value="500"/>
+                        <Setter Target="DownloadButton.HorizontalAlignment" Value="Left"/>
+                        <Setter Target="DownloadButton.Margin" Value="10,5"/>
+                        <!--<Setter Target="CommentProgressBar.Width" Value="300"/>-->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="AppHeadGrid.Width" Value="600"/>
+                        <!--<Setter Target="CommentProgressBar.Width" Value="400"/>-->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="AppHeadGrid.Width" Value="700"/>
+                        <!--<Setter Target="CommentProgressBar.Width" Value="500"/>-->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="900"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="AppHeadGrid.Width" Value="800"/>
+                        <!--<Setter Target="CommentProgressBar.Width" Value="600"/>-->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1000"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="AppHeadGrid.Width" Value="900"/>
+                        <!--<Setter Target="CommentProgressBar.Width" Value="800"/>-->
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <controls:DropShadowPanel Name="AppHeadDropShadowPanel"
+                                  HorizontalAlignment="Center"
+                                  Margin="0,20,0,0"
+                                  Grid.Row="0"
+                                  BlurRadius="5"
+                                  ShadowOpacity="0.5"
+                                  OffsetX="5"
+                                  OffsetY="5"
+                                  Color="Black">
+
+            <Grid x:Name="AppHeadGrid" Background="{StaticResource ThemeAcrylicBrushSecond}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image x:Name="AppImg" Width="300" Height="200" Grid.Column="0" Source="{x:Bind AppInfo.Img}"/>
+                <StackPanel Name="AppInfoStackPanle" Grid.Column="1" RelativePanel.RightOf="AppImg">
+                    <TextBlock x:Name="AppName" Text="{x:Bind AppInfo.Name}" FontSize="35" Margin="10,0"/>
+                    <HyperlinkButton Name="AppTypeHyperlinkButton" Click="AppTypeHyperlinkButton_Click" Margin="10,5" >
+                        <HyperlinkButton.Template>
+                            <ControlTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="Tag" Margin="0,0,10,0"/>
+                                    <TextBlock Text="工具"/>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </HyperlinkButton.Template>
+                    </HyperlinkButton>
+                    <HyperlinkButton Margin="10,5">
+                        <HyperlinkButton.Template>
+                            <ControlTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="Link" Margin="0,0,10,0"/>
+                                    <TextBlock Text="官网"/>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </HyperlinkButton.Template>
+                    </HyperlinkButton>
+                    <HyperlinkButton Margin="10,5">
+                        <HyperlinkButton.Template>
+                            <ControlTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="Share" Margin="0,0,10,0"/>
+                                    <TextBlock Text="分享"/>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </HyperlinkButton.Template>
+                    </HyperlinkButton>
+                    <!--<RatingControl Margin="10,5" 
+                                   IsReadOnly="True" 
+                                   Caption="{x:Bind AppInfo.Score}" 
+                                   HorizontalAlignment="Left"/>-->
+
+                    <Button x:Name="DownloadButton"  
+                            HorizontalAlignment="Right" 
+                            VerticalAlignment="Bottom"
+                            Margin="5,5" 
+                            Padding="0,5"
+                            Width="150"
+                            Style="{StaticResource TitelButton}" 
+                            Background="#FF113E61"
+                            Click="DownloadButton_Click">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <SymbolIcon Name="DownloadSymbolIcon" Symbol="Download"/>
+                            <ProgressRing Name="DownloadProgressRing" Visibility="Collapsed" Foreground="AliceBlue"/>
+                            <TextBlock Name="DownloadTextBlock" Text="下载" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+        </controls:DropShadowPanel>
+
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      VerticalScrollMode="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      HorizontalScrollMode="Disabled">
+            <StackPanel Margin="40,0">
+                <StackPanel Style="{StaticResource GridStackPanelStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="介绍" Style="{StaticResource TitleStyle}"/>
+                        <Button Style="{StaticResource TitelButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Repair"/>
+                                <TextBlock Text="修改" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <RichTextBlock Margin="0,0,100,0">
+                        <Paragraph>
+                            The Free Open Source \nImage Editor
+                        </Paragraph>
+                    </RichTextBlock>
+                </StackPanel>
+
+                <StackPanel Style="{StaticResource GridStackPanelStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="屏幕截图" Style="{StaticResource TitleStyle}"/>
+                        <Button Style="{StaticResource TitelButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Add"/>
+                                <TextBlock Text="添加截图" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel Style="{StaticResource GridStackPanelStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="软件信息" Style="{StaticResource TitleStyle}"/>
+                        <Button Style="{StaticResource TitelButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Repair"/>
+                                <TextBlock Text="修改" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+
+                <!--<StackPanel Style="{StaticResource GridStackPanelStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="评论" Style="{StaticResource TitleStyle}"/>
+                        <Button x:Name="AddComment" Click="AddComment_Click" Style="{StaticResource TitelButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Add"/>
+                                <TextBlock Text="添加评论" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBox Text="评论框"></TextBox>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="4.8" FontSize="50" Margin="0,-13,20,0"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Row="0" Grid.Column="0" Style="{StaticResource CommentResultStackPanel}">
+                                <TextBlock Text="5"/>
+                                <SymbolIcon Style="{StaticResource CommentRatingSymbolIcon}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource CommentResultStackPanel}">
+                                <TextBlock Text="4"/>
+                                <SymbolIcon Style="{StaticResource CommentRatingSymbolIcon}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2" Grid.Column="0" Style="{StaticResource CommentResultStackPanel}">
+                                <TextBlock Text="3"/>
+                                <SymbolIcon Style="{StaticResource CommentRatingSymbolIcon}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="3" Grid.Column="0" Style="{StaticResource CommentResultStackPanel}">
+                                <TextBlock Text="2"/>
+                                <SymbolIcon Style="{StaticResource CommentRatingSymbolIcon}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="4" Grid.Column="0" Style="{StaticResource CommentResultStackPanel}">
+                                <TextBlock Text="1"/>
+                                <SymbolIcon Style="{StaticResource CommentRatingSymbolIcon}"/>
+                            </StackPanel>
+
+                            <ProgressBar x:Name="CommentProgressBar" Grid.Row="0" Grid.Column="1" Style="{StaticResource CommentProgressBar}"/>
+                            <ProgressBar Grid.Row="1" Grid.Column="1" Style="{StaticResource CommentProgressBar}"/>
+                            <ProgressBar Grid.Row="2" Grid.Column="1" Style="{StaticResource CommentProgressBar}"/>
+                            <ProgressBar Grid.Row="3" Grid.Column="1" Style="{StaticResource CommentProgressBar}"/>
+                            <ProgressBar Grid.Row="4" Grid.Column="1" Style="{StaticResource CommentProgressBar}"/>
+
+                            <StackPanel Grid.Row="0" Grid.Column="2" Style="{StaticResource CommentResultStackPanel}">
+                                <TextBlock Text="89"/>
+                                <TextBlock Text="&#xE94C;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Grid.Column="2" Style="{StaticResource CommentResultStackPanel}">
+                                <TextBlock Text="89"/>
+                                <TextBlock Text="&#xE94C;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2" Grid.Column="2" Style="{StaticResource CommentResultStackPanel}">
+                                <TextBlock Text="89"/>
+                                <TextBlock Text="&#xE94C;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="3" Grid.Column="2" Style="{StaticResource CommentResultStackPanel}">
+                                <TextBlock Text="89"/>
+                                <TextBlock Text="&#xE94C;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="4" Grid.Column="2" Style="{StaticResource CommentResultStackPanel}">
+                                <TextBlock Text="89"/>
+                                <TextBlock Text="&#xE94C;" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+
+                    <ListView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <PersonPicture Background="Transparent"
+                                           VerticalAlignment="Stretch"
+                                           ProfilePicture="/Assets/Account.jpg"
+                                           HorizontalAlignment="Stretch" 
+                                           Width="36"
+                                           Height="36"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <PersonPicture Background="Transparent"
+                                               VerticalAlignment="Top"
+                                               ProfilePicture="/Assets/Account.jpg"
+                                               Height="40"
+                                               Grid.Column="0"/>
+
+                            <TextBlock Text="姓名" Margin="15,0,0,0" Grid.Column="1" VerticalAlignment="Top"/>
+
+                            <StackPanel Grid.Column="2">
+                                <RichTextBlock Margin="0,0,100,0">
+                                    <Paragraph>
+                                        Text="dfsfsfsfsfsfsfsfsfsfsfsfsfsgtre人格符
+                                   
+                                       合规范的回复继电保护后丰富啊混蛋哦PDF就狗屁的环境dfsfsfsfsfsfsfsfsfsfsfsfsfsgtre人格符
+                                   
+                                       合规范的回复继电保护后丰富啊混蛋哦PDF就狗屁的环境dfsfsfsfsfsfsfsfsfsfsfsfsfsgtre人格符
+                                   
+                                       合规范的回复继电保护后丰富啊混蛋哦PDF就狗屁的环境dfsfsfsfsfsfsfsfsfsfsfsfsfsgtre人格符
+                                   
+                                       合规范的回复继电保护后丰富啊混蛋哦PDF就狗屁的环境dfsfsfsfsfsfsfsfsfsfsfsfsfsgtre人格符
+                                   
+                                       合规范的回复继电保护后丰富啊混蛋哦PDF就狗屁的环境"/>
+                                    </Paragraph>
+                                </RichTextBlock>
+                                <RatingControl PlaceholderValue="4" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                        </Grid>
+                    </ListView>
+                </StackPanel>-->
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

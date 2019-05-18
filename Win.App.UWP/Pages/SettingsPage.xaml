@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="Win.App.UWP.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win.App.UWP.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:Settings="using:Win.App.UWP.Settings"
+    Background="{ThemeResource ThemeAcrylicBrush}">
+
+    <Page.Resources>
+        <Settings:Setting x:Key="Settings"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="设置" 
+                   Grid.Row="0"
+                   Style="{StaticResource ContentPageTitalTextBlock}"/>
+
+        <StackPanel Grid.Row="1" Margin="30,0,0,0">
+            <TextBlock x:Uid="Theme" 
+                       Style="{StaticResource TitalTextBlock}"/>
+
+            <StackPanel Name="ThemeStackPanel">
+                <RadioButton Name="Light"
+                             Tag="Light" 
+                             x:Uid="ThemeLight"
+                             Checked="ThemeRadioButton_Checked" 
+                             Style="{StaticResource ThemeRadioButton}"/>
+
+                <RadioButton Name="Dark" 
+                             Tag="Dark" 
+                             x:Uid="ThemeDark"
+                             Checked="ThemeRadioButton_Checked"
+                             Style="{StaticResource ThemeRadioButton}"/>
+
+                <RadioButton Name="Default" 
+                             Tag="Default"
+                             x:Uid="ThemeSystemDefault"
+                             Checked="ThemeRadioButton_Checked"
+                             Style="{StaticResource ThemeRadioButton}"/>
+            </StackPanel>
+
+            <TextBlock x:Uid="SyncSettings" Style="{StaticResource TitalTextBlock}"/>
+
+            <ToggleSwitch Name="SyncSettings"
+                          x:Uid="SyncSettingsSwitch"
+                          IsOn="{Binding Source={StaticResource Settings}, Path=SyncSettings, Mode=TwoWay}"
+                          Style="{StaticResource TitalToggleSwitch}"/>
+        </StackPanel>
+    </Grid>
+</Page>

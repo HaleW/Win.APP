@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Account</value>
+    <comment>MainPage.AccountButton.ToolTipService.ToolTip</comment>
+  </data>
+  <data name="BackButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Back</value>
+    <comment>MainPage.BackButton.ToolTipService.ToolTip</comment>
+  </data>
+  <data name="DownloadButton.Label" xml:space="preserve">
+    <value>Download</value>
+    <comment>MainPage.DownloadButton.Label</comment>
+  </data>
+  <data name="DownloadButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Download</value>
+    <comment>MainPage.DownloadButton.ToolTipService.ToolTip</comment>
+  </data>
+  <data name="PageTitle.Text" xml:space="preserve">
+    <value>App Hub</value>
+    <comment>MainPage.PageTitle.Text</comment>
+  </data>
+  <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
+    <value>Search</value>
+    <comment>MainPage.SearchAutoSuggestBox.PlaceholderText</comment>
+  </data>
+  <data name="SearchButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Search</value>
+    <comment>MainPage.SearchButton.ToolTipService.ToolTip</comment>
+  </data>
+  <data name="SearchButtonText.Text" xml:space="preserve">
+    <value>Search</value>
+    <comment>MainPage.SearchButton.Text</comment>
+  </data>
+  <data name="SettingButton.Label" xml:space="preserve">
+    <value>Settings</value>
+    <comment>MainPage.SettingButton.Label</comment>
+  </data>
+  <data name="SettingButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Settings</value>
+    <comment>MainPage.SettingButton.ToolTipService.ToolTip</comment>
+  </data>
+  <data name="SyncSettings.Text" xml:space="preserve">
+    <value>Sync settings</value>
+    <comment>SettingsPage.SyncSettings.Text</comment>
+  </data>
+  <data name="Theme.Text" xml:space="preserve">
+    <value>Theme</value>
+    <comment>SettingsPage.Theme.Text</comment>
+  </data>
+  <data name="ThemeDark.Content" xml:space="preserve">
+    <value>Dark</value>
+    <comment>SettingsPage.ThemeDark.Content</comment>
+  </data>
+  <data name="ThemeLight.Content" xml:space="preserve">
+    <value>Light</value>
+    <comment>SettingsPage.ThemeLight.Content</comment>
+  </data>
+  <data name="ThemeSystemDefault.Content" xml:space="preserve">
+    <value>Use system setting</value>
+    <comment>SettingsPage.ThemeSystemDefault.Content</comment>
+  </data>
+  <data name="SyncSettingsSwitch.OffContent" xml:space="preserve">
+    <value>off</value>
+    <comment>SettingsPage.SyncSettingsSwitch.OffContent</comment>
+  </data>
+  <data name="SyncSettingsSwitch.OnContent" xml:space="preserve">
+    <value>Open</value>
+    <comment>SettingsPage.SyncSettingsSwitch.OnContent</comment>
+  </data>
+</root>
