@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Client.DotNettyClient;
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
+using System.Threading.Tasks;
 using Win.App.UWP.Pages;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
@@ -27,7 +31,6 @@ namespace Win.App.UWP
             SetBackButtonVisible();
             backBbutton = BackButton;
             suggestions = new ObservableCollection<string>();
-            
             suggestions.Add("AAAAAA");
             suggestions.Add("CCCCCCCCCC");
             suggestions.Add("BBBBBBBBBBB");
@@ -128,6 +131,11 @@ namespace Win.App.UWP
                 // Use args.QueryText to determine what to do.
                 //a.Text = sender.Text;
             }
+        }
+
+        private void TCPButton_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

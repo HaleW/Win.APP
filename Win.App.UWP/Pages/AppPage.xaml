@@ -6,13 +6,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:data="using:Win.App.UWP.Model"
+    xmlns:data="using:Win.App.Client.Model"
     Background="{ThemeResource ThemeAcrylicBrush}">
 
     <Grid>
-        <GridView x:Name="AppGridView" ItemsSource="{x:Bind AppInfo}" Margin="30,30,0,30" IsItemClickEnabled="True" ItemClick="AppGridView_ItemClick">
+        <GridView x:Name="AppGridView" ItemsSource="{x:Bind AppInfos}" Margin="30,30,0,30" IsItemClickEnabled="True" ItemClick="AppGridView_ItemClick">
             <GridView.ItemTemplate>
-                <DataTemplate x:DataType="data:AppInfo">
+                <DataTemplate x:DataType="data:AppInfoModel">
                     <GridViewItem Margin="10">
                         <controls:DropShadowPanel BlurRadius="5"
                                                 ShadowOpacity="0.5"
@@ -20,8 +20,8 @@
                                                 OffsetY="0"
                                                 Color="Black">
                             <RelativePanel x:Name="AppRelativePanel" HorizontalAlignment="Center" Height="250" Width="200" Background="{StaticResource ThemeAcrylicBrushSecond}">
-                                <Image x:Name="AppImg" Width="200" Source="{x:Bind Img}"/>
-                                <TextBlock Text="{Binding Name}" 
+                                <Image x:Name="AppImg" Width="200" Source="{Binding AppInfo.LogoUrl}"/>
+                                <TextBlock Text="{Binding AppInfo.Name}" 
                                             TextWrapping="Wrap"
                                             FontWeight="Bold" 
                                             RelativePanel.AlignHorizontalCenterWithPanel="True" 

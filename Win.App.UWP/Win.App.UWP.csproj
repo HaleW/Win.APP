@@ -204,6 +204,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Win.App.Client\Win.App.Client.csproj">
+      <Project>{5DE63E98-285E-44BE-BA26-1F0C17E1D811}</Project>
+      <Name>Win.App.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Win.App.Protobuf\Win.App.Protobuf.csproj">
       <Project>{DAF7A9A0-1A8A-4BFC-983D-76DE95118CFB}</Project>
       <Name>Win.App.Protobuf</Name>

@@ -6,7 +6,7 @@
  ::C#编译器路径
  set CS_COMPILER_PATH=protoc.exe
  ::C#文件生成路径, 最后不要跟“\”符号
- set CS_TARGET_PATH=Src
+ set CS_TARGET_PATH=Msg
  
  ::遍历所有文件
  for /f "delims=" %%i in ('dir /b "%SOURCE_FOLDER%\*.proto"') do (

@@ -12,7 +12,7 @@ namespace Win.App.Server.Config
         /// </summary>
         static ConfigHelper()
         {
-            Configuration = new ConfigurationBuilder().AddJsonFile(@"Config.json").Build();
+            Configuration = new ConfigurationBuilder().AddJsonFile(@"Config/Config.json").Build();
         }
 
         /// <summary>

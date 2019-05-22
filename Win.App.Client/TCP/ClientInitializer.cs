@@ -1,12 +1,11 @@
 ﻿using DotNetty.Codecs.Protobuf;
 using DotNetty.Handlers.Logging;
 using DotNetty.Transport.Channels;
-using DotNetty.Transport.Channels.Sockets;
 using Win.App.Protobuf.Msg;
 
-namespace Win.App.Server.TCP
+namespace Client.DotNettyClient
 {
-    public class ServerInitializer : ChannelInitializer<IChannel>
+    public class ClientInitializer : ChannelInitializer<IChannel>
     {
         protected override void InitChannel(IChannel channel)
         {
@@ -18,9 +17,12 @@ namespace Win.App.Server.TCP
             pipeline.AddLast(new ProtobufDecoder(MsgProto.Parser));
             pipeline.AddLast(new ProtobufVarint32LengthFieldPrepender());
             pipeline.AddLast(new ProtobufEncoder());
+
             pipeline.AddLast(new LoggingHandler());
 
-            pipeline.AddLast(new ServerHandler());
+           // pipeline.AddLast(new DelimiterBasedFrameDecoder(65535, );
+            //maxFramePayloadLength
+            pipeline.AddLast(new ClientHandler());
         }
     }
 }

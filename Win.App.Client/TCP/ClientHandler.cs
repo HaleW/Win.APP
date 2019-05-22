@@ -1,20 +1,20 @@
-﻿using System;
-using DotNetty.Common.Utilities;
-using DotNetty.Handlers.Logging;
-using DotNetty.Transport.Channels;
-using Microsoft.Extensions.Logging;
+﻿using DotNetty.Transport.Channels;
+using System.Diagnostics;
+using Win.App.Client.Msg;
+using Win.App.Client.TCP;
+using Win.App.Model;
 using Win.App.Protobuf.Msg;
-using static Win.App.Server.TCP.ServerTools;
+using static Win.App.Client.TCP.ClientTools;
 
-namespace Win.App.Server.TCP
+namespace Client.DotNettyClient
 {
-    public class ServerHandler : SimpleChannelInboundHandler<MsgProto>
+    public class ClientHandler : SimpleChannelInboundHandler<MsgProto>
     {
         protected override void ChannelRead0(IChannelHandlerContext context, MsgProto msg)
         {
-            ServerTools tools = new ServerTools();
-            tools.PrintMsg(context, msg, PrintMsgType.RECEIVE);
+            ClientTools tools = new ClientTools();
 
+            tools.PrintMsg(context, msg, PrintMsgType.RECEIVE);
             switch (msg.TypeProto)
             {
                 case MsgTypeProto.Unknown:
@@ -22,7 +22,7 @@ namespace Win.App.Server.TCP
                 case MsgTypeProto.Appinfo:
                     break;
                 case MsgTypeProto.Appinfos:
-                    tools.SendAppInfos(context);
+                    new ReceiveMsg<AppInfoProto, AppInfo, string>().SaveData(msg.AppInfosProto, "AppInfo");
                     break;
                 case MsgTypeProto.Userinfo:
                     break;
@@ -31,25 +31,25 @@ namespace Win.App.Server.TCP
             }
         }
 
-        public override void ChannelActive(IChannelHandlerContext context)
+        public override void ChannelActive(IChannelHandlerContext ctx)
         {
-            Console.WriteLine(context.Channel.RemoteAddress+"active");
-            
+            ClientTools tools = new ClientTools();
+            Debug.WriteLine("connected=>" +tools.DateTimeNow+ ctx.Channel.RemoteAddress);
+            MsgProto msgProto = new MsgProto();
+            msgProto.SendDateTime = tools.DateTimeNow;
+            msgProto.TypeProto = MsgTypeProto.Appinfos;
+            ctx.WriteAndFlushAsync(msgProto);
         }
 
         public override void ChannelInactive(IChannelHandlerContext context)
         {
-            Console.WriteLine(context.Channel.RemoteAddress+"inactive");
+            Debug.WriteLine("unconnected=>" + context.Channel.RemoteAddress);
         }
 
         public override void ChannelReadComplete(IChannelHandlerContext context)
         {
             context.Flush();
-        }
-
-        public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
-        {
-            Console.WriteLine(context.Channel.RemoteAddress + "=>" + exception.Message);
+            //base.ChannelReadComplete(context);
         }
 
         public override void HandlerAdded(IChannelHandlerContext context)

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "Win.App.Protobuf.Msg";
+
+import "Proto/AppInfoProto.proto";
+import "Proto/MsgTypeProto.proto";
+
+message MsgProto {
+  map<string, AppInfoProto> AppInfosProto = 1;
+  MsgTypeProto TypeProto = 2;
+  string SendDateTime = 3;
+}

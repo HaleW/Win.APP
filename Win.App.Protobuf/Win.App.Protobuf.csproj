@@ -4,7 +4,33 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Folder Include="Src\" />
+    <Compile Remove="Src\**" />
+    <EmbeddedResource Remove="Src\**" />
+    <None Remove="Src\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Proto\AppInfoProto.proto" />
+    <None Remove="Proto\MsgProto.proto" />
+    <None Remove="Proto\MsgTypeProto.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.7.0" />
+    <PackageReference Include="Grpc.Tools" Version="1.20.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Proto\AppInfoProto.proto" GrpcServices="None" />
+    <Protobuf Include="Proto\MsgProto.proto" GrpcServices="None" />
+    <Protobuf Include="Proto\MsgTypeProto.proto" GrpcServices="None" />
   </ItemGroup>
 </Project>

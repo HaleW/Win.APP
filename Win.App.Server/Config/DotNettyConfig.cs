@@ -16,7 +16,7 @@ namespace Win.App.Server.Config
         {
             get
             {
-                string ssl = ConfigHelper.Configuration["ssl"];
+                string ssl = ConfigHelper.Configuration["tcp:ssl"];
 
                 return !string.IsNullOrEmpty(ssl) && bool.Parse(ssl);
             }
@@ -29,7 +29,7 @@ namespace Win.App.Server.Config
         {
             get
             {
-                string libuv = ConfigHelper.Configuration["libuv"];
+                string libuv = ConfigHelper.Configuration["tcp:libuv"];
 
                 return !string.IsNullOrEmpty(libuv) && bool.Parse(libuv);
             }
@@ -38,6 +38,6 @@ namespace Win.App.Server.Config
         /// <summary>
         /// 从Config.json中获取端口号
         /// </summary>
-        public static int Port => int.Parse(ConfigHelper.Configuration["port"]);
+        public static int Port => int.Parse(ConfigHelper.Configuration["tcp:port"]);
     }
 }

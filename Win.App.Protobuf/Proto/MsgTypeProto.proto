@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "Win.App.Protobuf.Msg";
+
+enum MsgTypeProto {
+	UNKNOWN = 0; 
+    APPINFO = 1;
+	APPINFOS = 2;
+	USERINFO = 3;
+}

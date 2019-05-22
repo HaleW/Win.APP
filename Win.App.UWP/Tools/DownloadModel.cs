@@ -23,56 +23,56 @@ namespace Win.App.UWP.Tools
         {
             get
             {
-                return _Guid;
+                return guid;
             }
             set
             {
-                _Guid = value;
+                guid = value;
                 RaisePropertyChanged("Guid");
             }
         }
-        private Guid _Guid;
+        private Guid guid;
 
         public double Progress
         {
             get
             {
-                return _Progress;
+                return progress;
             }
             set
             {
-                _Progress = value;
+                progress = value;
                 RaisePropertyChanged("Progress");
             }
         }
-        private double _Progress;
+        private double progress;
 
         public ulong TotalBytesToReceive
         {
             get
             {
-                return _TotalBytesToReceive;
+                return totalBytesToReceive;
             }
             set
             {
-                _TotalBytesToReceive = value;
+                totalBytesToReceive = value;
                 RaisePropertyChanged("TotalBytesToReceive");
             }
         }
-        private ulong _TotalBytesToReceive;
+        private ulong totalBytesToReceive;
 
         public ulong BytesReceived
         {
             get
             {
-                return _BytesReceived;
+                return bytesReceived;
             }
             set
             {
-                _BytesReceived = value;
+                bytesReceived = value;
                 RaisePropertyChanged("BytesReceived");
             }
         }
-        private ulong _BytesReceived;
+        private ulong bytesReceived;
     }
 }

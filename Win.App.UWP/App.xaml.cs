@@ -16,6 +16,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Win.App.UWP.Settings;
+using System.Threading.Tasks;
+using Client.DotNettyClient;
+using Win.App.Client.Msg;
+using Win.App.Client.SQLite;
 
 namespace Win.App.UWP
 {
@@ -91,7 +95,12 @@ namespace Win.App.UWP
                 // 确保当前窗口处于活动状态
                 Window.Current.Activate();
             }
+
             SetTheme();
+
+            Task.Run(() => new ClientRun().RunAsync());
+            new SendMsg().GetAppInfos();
+            new SqliteInitialize().InitializeDatabase("AppInfo");
         }
 
         /// <summary>

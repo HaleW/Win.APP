@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Win.App.Model;
 using Win.App.Server.Database.DAL;
-using Win.App.Server.Database.Entity;
 
 namespace Win.App.Server.Database.BLL
 {
@@ -10,13 +10,12 @@ namespace Win.App.Server.Database.BLL
     public class AppInfoBLL
     {
         /// <summary>
-        /// 通过应用名查询应用信息
+        /// 查询所有应用信息
         /// </summary>
-        /// <param name="name">应用名</param>
-        /// <returns>应用信息</returns>
-        public static List<AppInfo> SelectAppByName(string name)
+        /// <returns>应用信息列表</returns>
+        public List<AppInfo> SelectAllApp()
         {
-            return AppInfoDAL.SelectAppByName(name);
+            return AppInfoDAL.SelectAllApp();
         }
     }
 }

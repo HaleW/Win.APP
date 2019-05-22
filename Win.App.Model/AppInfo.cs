@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Win.App.Server.Database.Entity
+namespace Win.App.Model
 {
     /// <summary>
     /// 应用信息实体类
     /// </summary>
     public class AppInfo
     {
-        /// <summary>
-        /// id
-        /// </summary>
-        public int Id { get; set; }
-
         /// <summary>
         /// 应用名
         /// </summary>
@@ -63,11 +58,6 @@ namespace Win.App.Server.Database.Entity
         /// 应用发布时间
         /// </summary>
         public DateTime ReleaseDate { get; set; }
-
-        /// <summary>
-        /// 应用下载次数
-        /// </summary>
-        public int DownloadCount { get; set; }
 
         /// <summary>
         /// 应用评分

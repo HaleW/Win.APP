@@ -1,55 +1,19 @@
 ﻿syntax = "proto3";
 
-package Win.App.Protobuf.Src;
+option csharp_namespace = "Win.App.Protobuf.Msg";
 
 message AppInfoProto {
-    /// <summary>
-    /// Id
-    /// </summary>
-    int32 Id = 1;
-
-    /// <summary>
-    /// 应用名
-    /// </summary>
-    string Name=2;
-
-    /// <summary>
-    /// 应用图片
-    /// </summary>
-    string Img=3;
-
-    /// <summary>
-    /// 应用描述
-    /// </summary>
-    string Describe=4;
-
-    /// <summary>
-    /// 应用下载URL
-    /// </summary>
-    string DownloadUrl=5;
-
-    /// <summary>
-    /// 应用下载次数
-    /// </summary>
-    int32 Downloads=6;
-
-    /// <summary>
-    /// 应用版本
-    /// </summary>
-    string Version=7;
-
-    /// <summary>
-    /// 应用更新时间
-    /// </summary>
-    string UpdateTime=8;
-
-    /// <summary>
-    /// 应用评分
-    /// </summary>
-    double Score=9;
-
-    /// <summary>
-    /// 应用类型
-    /// </summary>
-    string Type=10;
+    string Name = 1;
+	string Url = 2;
+    string Img = 3;
+    string Describe_EN = 4;
+	string Describe_CN = 5;
+    string DownloadUrl32 = 6;
+	string DownloadUrl64 = 7;
+    int32 DownloadCount = 8;
+    string Version = 9;
+    string ReleaseDate = 10;
+    double Score = 11;
+    string Type = 12;
+	string LogoUrl = 13;
 }

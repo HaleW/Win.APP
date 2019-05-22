@@ -1,7 +1,10 @@
-﻿using DotNetty.Transport.Bootstrapping;
+﻿using DotNetty.Common.Internal.Logging;
+using DotNetty.Handlers.Logging;
+using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
 using DotNetty.Transport.Libuv;
+using Microsoft.Extensions.Logging.Console;
 using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -9,10 +12,12 @@ using Win.App.Server.Config;
 
 namespace Win.App.Server.TCP
 {
-    public static class ServerRun
+    public class ServerRun
     {
-        public static async Task Run()
+        public async Task RunAsync()
         {
+            //InternalLoggerFactory.DefaultFactory.AddProvider(new ConsoleLoggerProvider((s, level) => true, false));
+
             IEventLoopGroup bossGroup;
             IEventLoopGroup workerGroup;
 
@@ -28,7 +33,7 @@ namespace Win.App.Server.TCP
                 workerGroup = new MultithreadEventLoopGroup();
             }
             //TODO
-            X509Certificate2 x509Certificate2 = null;
+            //X509Certificate2 x509Certificate2 = null;
             if (DotNettyConfig.IsSsl)
             {
                 //x509Certificate2= new X509Certificate2()
@@ -48,7 +53,9 @@ namespace Win.App.Server.TCP
                     bootstrap.Channel<TcpServerSocketChannel>();
                 }
 
-                bootstrap.Option(ChannelOption.SoBacklog, 1024)
+                bootstrap
+                    .Option(ChannelOption.SoBacklog, 1024)
+                    .Handler(new LoggingHandler())
                     .ChildOption(ChannelOption.SoKeepalive, true)
                     .ChildHandler(new ServerInitializer());
 
@@ -56,7 +63,7 @@ namespace Win.App.Server.TCP
 
                 IChannel boundChannel = await bootstrap.BindAsync(DotNettyConfig.Port);
 
-                
+
                 Console.WriteLine("DotNetty Started，Port:" + DotNettyConfig.Port);
                 Console.ReadKey();
                 await boundChannel.CloseAsync();
