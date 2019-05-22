@@ -4,6 +4,6 @@
 
 ## => Developing...
 
-![screen_black](~/img/screen_black.png)
+![screen_black](https://github.com/HaleW/Win.App/blob/master/docs/img/screen_black.png)
 
-![screen_white](~/img/screen_white.png)
+![screen_white](https://github.com/HaleW/Win.App/blob/master/docs/img/screen_white.png)
