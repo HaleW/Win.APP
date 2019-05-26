@@ -23,7 +23,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="下载" Style="{StaticResource ContentPageTitalTextBlock}" Grid.Row="0"/>
+        <TextBlock Text="下载" Style="{StaticResource PagesTitalTextBlock}" Grid.Row="0"/>
 
         <ListView Name="DownloadListView" IsItemClickEnabled="True" ItemClick="DownloadListView_ItemClick" ItemsSource="{x:Bind Downloads}" Margin="0,30" Grid.Row="1">
             <ListView.ItemTemplate>

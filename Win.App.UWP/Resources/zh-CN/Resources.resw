@@ -134,7 +134,7 @@
     <comment>MainPage.DownloadButton.ToolTipService.ToolTip</comment>
   </data>
   <data name="PageTitle.Text" xml:space="preserve">
-    <value>应用中心</value>
+    <value>Win.App</value>
     <comment>MainPage.PageTitle.Text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">

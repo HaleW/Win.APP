@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Threading;
-using Win.App.UWP.Model;
+using Win.App.Model;
 using Windows.Networking.BackgroundTransfer;
 
 namespace Win.App.UWP.Tools

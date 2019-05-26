@@ -1,0 +1,17 @@
+setup.py
+App/__init__.py
+App/items.py
+App/middlewares.py
+App/pipelines.py
+App/run.py
+App/settings.py
+App/spiders/__init__.py
+App/spiders/a7_zip.py
+App/spiders/gimp.py
+App/spiders/inkscape.py
+App/spiders/paint_net.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt

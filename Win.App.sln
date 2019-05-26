@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win.App.Protobuf", "Win.App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win.App.Client", "Win.App.Client\Win.App.Client.csproj", "{5DE63E98-285E-44BE-BA26-1F0C17E1D811}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win.App.Model", "Win.App.Model\Win.App.Model.csproj", "{76BEBFA0-6849-4981-8F4C-86B9BCD40327}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win.App.Model", "Win.App.Model\Win.App.Model.csproj", "{76BEBFA0-6849-4981-8F4C-86B9BCD40327}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

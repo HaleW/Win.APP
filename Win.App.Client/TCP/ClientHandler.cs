@@ -1,12 +1,11 @@
 ﻿using DotNetty.Transport.Channels;
 using System.Diagnostics;
 using Win.App.Client.Msg;
-using Win.App.Client.TCP;
 using Win.App.Model;
 using Win.App.Protobuf.Msg;
 using static Win.App.Client.TCP.ClientTools;
 
-namespace Client.DotNettyClient
+namespace Win.App.Client.TCP
 {
     public class ClientHandler : SimpleChannelInboundHandler<MsgProto>
     {
@@ -22,7 +21,7 @@ namespace Client.DotNettyClient
                 case MsgTypeProto.Appinfo:
                     break;
                 case MsgTypeProto.Appinfos:
-                    new ReceiveMsg<AppInfoProto, AppInfo, string>().SaveData(msg.AppInfosProto, "AppInfo");
+                    ReceiveMsg<AppInfoProto, AppInfo, string>.SaveData(msg.AppInfosProto, "AppInfo");
                     break;
                 case MsgTypeProto.Userinfo:
                     break;
@@ -31,25 +30,20 @@ namespace Client.DotNettyClient
             }
         }
 
-        public override void ChannelActive(IChannelHandlerContext ctx)
+        public override void ChannelActive(IChannelHandlerContext context)
         {
-            ClientTools tools = new ClientTools();
-            Debug.WriteLine("connected=>" +tools.DateTimeNow+ ctx.Channel.RemoteAddress);
-            MsgProto msgProto = new MsgProto();
-            msgProto.SendDateTime = tools.DateTimeNow;
-            msgProto.TypeProto = MsgTypeProto.Appinfos;
-            ctx.WriteAndFlushAsync(msgProto);
+            Debug.WriteLine("connected => " + context.Channel.RemoteAddress);
         }
 
         public override void ChannelInactive(IChannelHandlerContext context)
         {
-            Debug.WriteLine("unconnected=>" + context.Channel.RemoteAddress);
+            Debug.WriteLine("unconnected => " + context.Channel.RemoteAddress);
+            context.CloseAsync();
         }
 
         public override void ChannelReadComplete(IChannelHandlerContext context)
         {
             context.Flush();
-            //base.ChannelReadComplete(context);
         }
 
         public override void HandlerAdded(IChannelHandlerContext context)

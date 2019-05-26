@@ -1,25 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Win.App.UWP.Settings;
 using System.Threading.Tasks;
-using Client.DotNettyClient;
 using Win.App.Client.Msg;
-using Win.App.Client.SQLite;
+using Win.App.Client.TCP;
 
 namespace Win.App.UWP
 {
@@ -97,10 +85,6 @@ namespace Win.App.UWP
             }
 
             SetTheme();
-
-            Task.Run(() => new ClientRun().RunAsync());
-            new SendMsg().GetAppInfos();
-            new SqliteInitialize().InitializeDatabase("AppInfo");
         }
 
         /// <summary>

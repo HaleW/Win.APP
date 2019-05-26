@@ -7,10 +7,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
-using Win.App.UWP.Model;
-using Win.App.UWP;
 using Win.App.UWP.Tools;
-
+using Win.App.Model;
 
 namespace Win.App.UWP.Pages
 {
@@ -36,7 +34,7 @@ namespace Win.App.UWP.Pages
         {
             SetDownloadButtonState(DownloadState.Downloading);
 
-            string downloadUrl = AppInfo.DownloadUrl;
+            string downloadUrl = AppInfo.DownloadUrl64;
             try
             {
                 await BulidDownloadAsync(downloadUrl);
@@ -83,13 +81,13 @@ namespace Win.App.UWP.Pages
             }
             catch (Exception ex)
             {
-                AppInfo.DownloadErrorMsg = ex.Message;
-                AppInfo.DownloadState = DownloadState.Error;
+                //AppInfo.DownloadErrorMsg = ex.Message;
+                //AppInfo.DownloadState = DownloadState.Error;
 
                 return;
             }
 
-            AppInfo.DownloadState = DownloadState.Downloading;
+            //AppInfo.DownloadState = DownloadState.Downloading;
             AppInfoPage.AppDownloadingList.Add(AppInfo);
 
             BackgroundDownloader backgroundDownloader = new BackgroundDownloader();
@@ -101,7 +99,7 @@ namespace Win.App.UWP.Pages
             {
                 if (info.Name.Equals(AppInfo.Name))
                 {
-                    info.DownloadState = DownloadState.Downloaded;
+                    //info.DownloadState = DownloadState.Downloaded;
                 }
             }
         }

@@ -14,7 +14,7 @@ namespace Win.App.Server.TCP
         {
             ServerTools tools = new ServerTools();
             tools.PrintMsg(context, msg, PrintMsgType.RECEIVE);
-
+           
             switch (msg.TypeProto)
             {
                 case MsgTypeProto.Unknown:
@@ -33,13 +33,12 @@ namespace Win.App.Server.TCP
 
         public override void ChannelActive(IChannelHandlerContext context)
         {
-            Console.WriteLine(context.Channel.RemoteAddress+"active");
-            
+            Console.WriteLine(context.Channel.RemoteAddress + " => active");
         }
 
         public override void ChannelInactive(IChannelHandlerContext context)
         {
-            Console.WriteLine(context.Channel.RemoteAddress+"inactive");
+            Console.WriteLine(context.Channel.RemoteAddress + " => inactive");
         }
 
         public override void ChannelReadComplete(IChannelHandlerContext context)
@@ -49,7 +48,7 @@ namespace Win.App.Server.TCP
 
         public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
         {
-            Console.WriteLine(context.Channel.RemoteAddress + "=>" + exception.Message);
+            Console.WriteLine(context.Channel.RemoteAddress + " => " + exception.Message);
         }
 
         public override void HandlerAdded(IChannelHandlerContext context)

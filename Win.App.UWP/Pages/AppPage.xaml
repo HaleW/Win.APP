@@ -6,13 +6,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:data="using:Win.App.Client.Model"
+    xmlns:data="using:Win.App.Model"
     Background="{ThemeResource ThemeAcrylicBrush}">
 
     <Grid>
-        <GridView x:Name="AppGridView" ItemsSource="{x:Bind AppInfos}" Margin="30,30,0,30" IsItemClickEnabled="True" ItemClick="AppGridView_ItemClick">
+        <Border x:Name="LoadingBorder" Visibility="Collapsed" Background="{StaticResource ThemeAcrylicBrushSecond}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ProgressRing Name="LoadingProgressRing" IsActive="True" Width="50" Height="50"/>
+                <TextBlock x:Name="LoadingTextBlock" Text="加载失败" FontSize="30" Visibility="Collapsed"/>
+            </StackPanel>
+        </Border>
+        <GridView x:Name="AppGridView" Margin="30,30,0,30" IsItemClickEnabled="True" ItemClick="AppGridView_ItemClick">
             <GridView.ItemTemplate>
-                <DataTemplate x:DataType="data:AppInfoModel">
+                <DataTemplate x:DataType="data:AppInfo">
                     <GridViewItem Margin="10">
                         <controls:DropShadowPanel BlurRadius="5"
                                                 ShadowOpacity="0.5"
@@ -20,8 +26,8 @@
                                                 OffsetY="0"
                                                 Color="Black">
                             <RelativePanel x:Name="AppRelativePanel" HorizontalAlignment="Center" Height="250" Width="200" Background="{StaticResource ThemeAcrylicBrushSecond}">
-                                <Image x:Name="AppImg" Width="200" Source="{Binding AppInfo.LogoUrl}"/>
-                                <TextBlock Text="{Binding AppInfo.Name}" 
+                                <Image x:Name="AppImg" Width="200" Source="{Binding LogoUrl}"/>
+                                <TextBlock Text="{Binding Name}" 
                                             TextWrapping="Wrap"
                                             FontWeight="Bold" 
                                             RelativePanel.AlignHorizontalCenterWithPanel="True" 

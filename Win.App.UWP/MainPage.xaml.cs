@@ -1,17 +1,16 @@
-﻿using Client.DotNettyClient;
-using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
 using System.Threading.Tasks;
+using static Win.App.Client.Msg.SendMsg;
+using Win.App.Client.TCP;
 using Win.App.UWP.Pages;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Win.App.Protobuf.Msg;
 
 namespace Win.App.UWP
 {
@@ -20,16 +19,25 @@ namespace Win.App.UWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private ObservableCollection<String> suggestions;
+        private readonly ObservableCollection<string> suggestions;
         public static Button backBbutton;
         public MainPage()
         {
             this.InitializeComponent();
-            ContentFrame.Navigate(typeof(AppPage));
-            //ContentFrame.Navigate(typeof(LogoPage));
+
+            Task.Run(async () => 
+            {
+                await new ClientRun().RunAsync();
+                
+                GetAppInfos();
+            });
+            
             CustomTitleBar();
+
             SetBackButtonVisible();
+
             backBbutton = BackButton;
+
             suggestions = new ObservableCollection<string>();
             suggestions.Add("AAAAAA");
             suggestions.Add("CCCCCCCCCC");
@@ -38,6 +46,7 @@ namespace Win.App.UWP
             suggestions.Add("DDDDDDDD");
             suggestions.Add("RRRRRRRRRRRR");
             suggestions.Add("TTTTTTTTTTTTT");
+            ContentFrame.Navigate(typeof(AppPage));
         }
 
         private void CustomTitleBar()
@@ -69,10 +78,8 @@ namespace Win.App.UWP
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ContentFrame.CanGoBack)
-            {
-                ContentFrame.GoBack();
-            }
+            if (ContentFrame.CanGoBack) { ContentFrame.GoBack(); }
+            
             SetBackButtonVisible();
         }
 
@@ -97,12 +104,6 @@ namespace Win.App.UWP
             ContentFrame.Navigate(typeof(DownloadPage));
             SetBackButtonVisible();
         }
-
-        //private void AccountButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ContentFrame.Navigate(typeof(AccountPage));
-        //    SetBackButtonVisible();
-        //}
 
         private void SearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
@@ -131,11 +132,6 @@ namespace Win.App.UWP
                 // Use args.QueryText to determine what to do.
                 //a.Text = sender.Text;
             }
-        }
-
-        private void TCPButton_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

@@ -10,8 +10,8 @@ using Windows.Networking.BackgroundTransfer;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Win.App.UWP.Model;
 using Win.App.UWP.Tools;
+using Win.App.Model;
 
 namespace Win.App.UWP.Pages
 {
@@ -85,7 +85,7 @@ namespace Win.App.UWP.Pages
 
                 foreach (AppInfo appInfo in AppInfoList)
                 {
-                    if (download.Source.Equals(appInfo.DownloadUrl))
+                    if (download.Source.Equals(appInfo.DownloadUrl64))
                     {
                         download.AppInfo = appInfo;
                     }

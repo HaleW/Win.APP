@@ -3,7 +3,7 @@ using DotNetty.Handlers.Logging;
 using DotNetty.Transport.Channels;
 using Win.App.Protobuf.Msg;
 
-namespace Client.DotNettyClient
+namespace Win.App.Client.TCP
 {
     public class ClientInitializer : ChannelInitializer<IChannel>
     {
@@ -18,10 +18,6 @@ namespace Client.DotNettyClient
             pipeline.AddLast(new ProtobufVarint32LengthFieldPrepender());
             pipeline.AddLast(new ProtobufEncoder());
 
-            pipeline.AddLast(new LoggingHandler());
-
-           // pipeline.AddLast(new DelimiterBasedFrameDecoder(65535, );
-            //maxFramePayloadLength
             pipeline.AddLast(new ClientHandler());
         }
     }

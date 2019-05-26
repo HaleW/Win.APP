@@ -1,6 +1,7 @@
 {
   "mysql": {
     "ConnectionString": "server=192.168.1.5;user id=wsl;password=1213;persistsecurityinfo=True;database=Win.App"
+    //"ConnectionString": "server=47.106.235.197;user id=root;password=Qq123456;persistsecurityinfo=True;database=Win.App"
   },
   "tcp": {
     "ssl": "true",

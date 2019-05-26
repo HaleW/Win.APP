@@ -30,8 +30,24 @@ namespace Win.App.Server.Database.Helper
                 for (int i = 0; i < dr.Table.Columns.Count; i++)
                 {
                     PropertyInfo propertyInfo = entity.GetType().GetProperty(dr.Table.Columns[i].ColumnName);
-                    if (propertyInfo != null && dr[i] != DBNull.Value)
+                    if (propertyInfo != null)
                     {
+                        if(dr[i] == DBNull.Value)
+                        {
+                            switch (propertyInfo.PropertyType.Name)
+                            {
+                                case "String":
+                                    dr[i] = "";
+                                    break;
+                                case "Double":
+                                    dr[i] = 0;
+                                    break;
+                                default:
+                                    var a = propertyInfo.GetType().Name;
+                                    var b = propertyInfo;
+                                    break;
+                            }
+                        }
                         propertyInfo.SetValue(entity, dr[i], null);
                     }
                 }

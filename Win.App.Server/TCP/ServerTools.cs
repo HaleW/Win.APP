@@ -12,13 +12,13 @@ namespace Win.App.Server.TCP
         public void SendAppInfos(IChannelHandlerContext context)
         {
             AppInfoBLL appInfoBLL = new AppInfoBLL();
-            List<Model.AppInfo> appInfos = appInfoBLL.SelectAllApp();
+            List<AppInfo> appInfos = appInfoBLL.SelectAllApp();
             if (appInfos == null || appInfos.Count == 0)
             {
                 return;
             }
             MsgProto msgProto = new MsgProto();
-            foreach (Model.AppInfo appInfo in appInfos)
+            foreach (AppInfo appInfo in appInfos)
             {
                 AppInfoProto appInfoProto = new AppInfoProto
                 {

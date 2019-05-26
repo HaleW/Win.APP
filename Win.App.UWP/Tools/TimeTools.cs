@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Win.App.UWP.Tools
 {
-    public class CurrentTime
+    public class TimeTools
     {
         public static long CurrentTimeMillis()
         {
@@ -14,5 +10,14 @@ namespace Win.App.UWP.Tools
             TimeSpan diff = DateTime.Now.ToUniversalTime() - origin;
             return (long)diff.TotalMilliseconds;
         }
+
+        public static int TimeDiffOfSeconds(DateTime dateTime)
+        {
+            DateTime now = DateTime.Now;
+          
+            TimeSpan diff = now.Subtract(dateTime);
+
+            return diff.Seconds;
+        } 
     }
 }

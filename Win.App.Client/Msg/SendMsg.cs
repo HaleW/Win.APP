@@ -1,34 +1,35 @@
-﻿using Client.DotNettyClient;
-using DotNetty.Transport.Channels;
+﻿using DotNetty.Transport.Channels;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Win.App.Client.TCP;
 using Win.App.Protobuf.Msg;
 
 namespace Win.App.Client.Msg
 {
-    public class SendMsg
+    public static class SendMsg
     {
-        public SendMsg()
+        public static void GetAppInfos()
         {
-            Channel = ClientRun.ClientChannel;
-            Tools = new ClientTools();
-        }
-
-        private readonly IChannel Channel;
-
-        private readonly ClientTools Tools;
-
-        public void GetAppInfos()
-        {
+            IChannel Channel = ClientRun.ClientChannel;
             if (Channel != null && Channel.IsWritable)
             {
-                Channel.WriteAndFlushAsync(GetAppInfosMsg);
+                try
+                {
+                    Channel.WriteAndFlushAsync(GetAppInfosMsg);
+                }
+                catch (Exception e)
+                {
+                    Debug.Fail(e.Message);
+                }
             }
         }
 
-        private MsgProto GetAppInfosMsg
+        private static MsgProto GetAppInfosMsg
         {
             get
             {
+                ClientTools Tools = new ClientTools();
                 MsgProto msgProto = new MsgProto
                 {
                     TypeProto = MsgTypeProto.Appinfos,

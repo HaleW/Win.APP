@@ -21,7 +21,7 @@
 
         <TextBlock Text="设置" 
                    Grid.Row="0"
-                   Style="{StaticResource ContentPageTitalTextBlock}"/>
+                   Style="{StaticResource PagesTitalTextBlock}"/>
 
         <StackPanel Grid.Row="1" Margin="30,0,0,0">
             <TextBlock x:Uid="Theme" 

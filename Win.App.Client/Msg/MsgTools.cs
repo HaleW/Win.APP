@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf.Collections;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Text;
 
@@ -37,6 +38,18 @@ namespace Win.App.Client.Msg
             }
 
             return res;
+        }
+
+        public ObservableCollection<M> MapFieldToObservableCollection(MapField<K, P> mapField)
+        {
+            ObservableCollection<M> ms = new ObservableCollection<M>();
+            foreach (KeyValuePair<K, P> pair in mapField)
+            {
+                M m = ProtoToModel(pair.Value);
+                ms.Add(m);
+            }
+
+            return ms;
         }
 
         public Dictionary<K, M> MapFieldToList(MapField<K, P> mapField)
