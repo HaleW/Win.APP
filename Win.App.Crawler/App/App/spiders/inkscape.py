@@ -16,7 +16,7 @@ class InkscapeSpider(scrapy.Spider):
 
         name = response.xpath('//*[@id="logo"]/h1/a/text()').extract_first()
 
-        logoUrl = response.xpath('//*[@id="logo"]/a/img/@src').extract_first()
+        logo_url = response.xpath('//*[@id="logo"]/a/img/@src').extract_first()
 
         describe_en = response.xpath('//*[@id="overview"]/div/p[1]/text()').extract_first()
 
@@ -27,7 +27,7 @@ class InkscapeSpider(scrapy.Spider):
 
         item['name'] = name
         item['url'] = url
-        item['logo_url'] = logoUrl
+        item['logo_url'] = logo_url
         item['describe_en'] = describe_en
         item['version'] = version
 

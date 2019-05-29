@@ -6,12 +6,11 @@
 
 -----------------------------------------------
 
-> This is a UWP can download the Windows traditional software.
+> 这是一个能够下载 Windows 传统软件的 UWP
 
+## 目前正在开发之中...
 
-## It is Developing...
-
-> [App List](./AppList.md)
+> [应用列表](./AppList.md)
 
 ![screen_black](https://raw.githubusercontent.com/HaleW/Win.App/master/docs/img/screen_black.png)
 
